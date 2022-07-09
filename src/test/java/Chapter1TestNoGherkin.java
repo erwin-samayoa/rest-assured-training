@@ -5,7 +5,8 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class Chapter1Test {
+public class Chapter1TestNoGherkin {
+
 
     @Test
     public void test_zc_90210() {

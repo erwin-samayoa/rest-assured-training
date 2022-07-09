@@ -1,8 +1,10 @@
-import io.restassured.RestAssured;
+//import io.restassured.RestAssured;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.equalTo;
+//import static org.testng.Assert.assertEquals;
 
 public class Chapter3Tests {
     @DataProvider (name = "data-provider-zc")
@@ -17,8 +19,20 @@ public class Chapter3Tests {
     @Test (dataProvider = "data-provider-zc")
     public void testZipCodes(String countryCode, String zipCode, String expectedPlaceName) {
         System.out.println("Testing: " + countryCode + " " + zipCode + " to be " + expectedPlaceName);
-        var response = RestAssured.get("http://api.zippopotam.us/" + countryCode + "/" + zipCode);
+        given().
+                pathParam("countryCode",countryCode).pathParam("zipCode",zipCode).
+        when().
+                get("http://api.zippopotam.us/{countryCode}/{zipCode}").
+        then().
+                assertThat().
 
-        assertEquals(response.getBody().jsonPath().get("places[0].'place name'"),expectedPlaceName);
+                body("places[0].'place name'",equalTo(expectedPlaceName));
+
+        /*
+        var response = RestAssured.get("places[0].'place name'");
+
+        assertEquals(response.getBody().jsonPath().get(),expectedPlaceName);
+
+         */
     }
 }
