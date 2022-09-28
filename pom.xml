@@ -18,7 +18,7 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>5.1.1</version>
-            <scope>test</scope>
+
         </dependency>
 
         <dependency>
@@ -36,7 +36,19 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.4.1</version>
+        </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220924</version>
+        </dependency>
 
     </dependencies>
 
